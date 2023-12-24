@@ -3,8 +3,10 @@
 
 bool hasWon(char board[3][3], char player)
 {
+    int boardLen = sizeof(board) / sizeof(board[0]);
+
     // check the rows
-    for (int row = 0; row < 3; row++)
+    for (int row = 0; row < boardLen; row++)
     {
         if (board[row][0] == player && board[row][1] == player && board[row][2] == player)
         {
@@ -13,7 +15,7 @@ bool hasWon(char board[3][3], char player)
     }
 
     // check the cols
-    for (int col = 0; col < 3; col++)
+    for (int col = 0; col < boardLen; col++)
     {
         if (board[0][col] == player && board[1][col] == player && board[2][col] == player)
         {
@@ -49,7 +51,7 @@ void printBoard(char board[3][3])
 int main()
 {
     char board[3][3];
-    int boardLen = 3;
+    int boardLen = sizeof(board) / sizeof(board[0]);
     for (int row = 0; row < boardLen; row++)
     {
         for (int col = 0; col < boardLen; col++)
@@ -89,9 +91,10 @@ int main()
         }
         else
         {
-            printf("Invalid position.Try again!");
+            printf("Invalid position.Try again!\n");
         }
     }
+    printBoard(board);
 
     return 0;
 }
